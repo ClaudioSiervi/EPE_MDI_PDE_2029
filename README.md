@@ -22,10 +22,10 @@ O modelo computacional MDI (modelo de decisão de investimentos), empregado na e
 #### Instruções básicas para execução
 
 
-_Interface para execução_
+_Interface para execução_   
 A execução é feita a partir da pasta de trabalho MS Excel “Dados_MDI_PDE_2029.xlsx” (disponibilizada junto com o código-fonte), que também contém todos os dados necessários para a montagem do problema de otimização resolvido pelo MDI.
 
-_Configurações Iniciais_
+_Configurações Iniciais_   
 Inicialmente é necessário configurar o caminho para o pacote de otimização, editando-se o arquivo "Control. py" (linha 36), conforme figura a seguir:
 
 ![Figura1](https://user-images.githubusercontent.com/16821891/70325274-63bb8b00-1810-11ea-803f-d613413e63f6.png?raw=true "Editar Control.py")
