@@ -8,6 +8,7 @@ from coopr.pyomo import *;
 from pyomo.environ import *;
 from pyomo.opt import *;
 import jsonpickle;
+import time
 
 class Control:
     
@@ -21,23 +22,46 @@ class Control:
 
         # carrega as configuracoes iniciais da planilha
         print("Carregando Dados");
+        tic = time.time()
+        
         self.carregaInicio();
+        
+        toc = time.time()
+        print("tempo 'Carregando Dados': %.8f s" %(toc-tic))
 
         # inicializa o sistema
         self.sin = Sistema(self.recebe_dados, self.tipoCombHidroEol);
+
+
         print("Carregando Problema");
+        
+        tic = time.time()
 
         self.imprimeSeriesHidro();
  
         # cria o problema passando os parametros do carregaInicio
         self.problema = Problema(self.recebe_dados, self.sin, self.isRestPotHabilitada, self.isRestExpJanHabilitada, self.isPerpetHabilitada, self.fatorCarga, self.anoValidadeTemp, self.fatorValidadeTemp, self.isIntercambLimitado, self.subsFic);
+       
+        toc = time.time()
+        print("tempo 'Carregando Problema': %.8f s" %(toc-tic))
         
+        print ("Cria Modelo");
+        tic = time.time()
         # habilita o cplex
         optsolver = SolverFactory("cplex", executable= "C:\\Program Files\\IBM\\ILOG\\CPLEX_Studio128\\cplex\\bin\\x64_win64\\cplex.exe");
-        print ("Modelo Criado");
-        self.problema.modelo.preprocess();
-        print ("Pre-process executado");
         
+        toc = time.time()
+        print("tempo 'Cria Modelo': %.8f s" %(toc-tic))
+        
+        print ("Pre-process executando...");
+        tic = time.time()
+
+        self.problema.modelo.preprocess();
+
+        toc = time.time()
+        print("tempo 'Pre-process': %.8f s" %(toc-tic))
+
+
         #Configuracoes do solver
         optsolver.options['mipgap'] = 0.005;
         optsolver.options['mip_strategy_startalgorithm'] = 4;
@@ -46,10 +70,17 @@ class Control:
 
 
         print("Executando o CPLEX");
-
+        tic = time.time()
+        
         results = optsolver.solve(self.problema.modelo, load_solutions=True); #, symbolic_solver_labels=True, tee=True);
 
+        toc = time.time()
+        print("tempo 'Execução CPLEX': %.8f s" %(toc-tic))
+
+
         print("Impressão de Resultados");
+        tic = time.time()
+
         # escreve resultados em um txt
         with open(self.caminho + "resultado.txt", "w") as saidaResul:
             results.write(ostream=saidaResul);
@@ -86,6 +117,9 @@ class Control:
                 self.saida_dados.imprimeDuais("D");
             
         self.saida_dados.imprimeLog(tempo_inicial = self.start);
+        
+        toc = time.time()
+        print("tempo 'Impressão de Resultados': %.8f s" %(toc-tic))
 
         return;
     
