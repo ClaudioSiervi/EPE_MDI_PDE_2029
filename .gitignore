@@ -11,8 +11,8 @@ __pycache__
 # MS Office
 
 Resumo.xlsx
-Dados_MDI_PDE_2029.xlsm
-
+*.xlsm*
+~$*.xlsm*
 
 *.doc*
 ~$*.doc*
