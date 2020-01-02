@@ -33,7 +33,7 @@ class Control:
         self.problema = Problema(self.recebe_dados, self.sin, self.isRestPotHabilitada, self.isRestExpJanHabilitada, self.isPerpetHabilitada, self.fatorCarga, self.anoValidadeTemp, self.fatorValidadeTemp, self.isIntercambLimitado, self.subsFic);
         
         # habilita o cplex
-        optsolver = SolverFactory("cplex", executable= "C:\\ILOG\\CPLEX_Studio122\\cplex\\bin\\x64_win64\\cplex.exe");
+        optsolver = SolverFactory("cplex", executable= "C:\\Program Files\\IBM\\ILOG\\CPLEX_Studio128\\cplex\\bin\\x64_win64\\cplex.exe");
         print ("Modelo Criado");
         self.problema.modelo.preprocess();
         print ("Pre-process executado");
