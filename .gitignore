@@ -1,0 +1,35 @@
+
+=======
+.vscode
+__pycache__
+
+
+
+*.txt*
+
+
+# MS Office
+
+Resumo.xlsx
+*.xlsm*
+~$*.xlsm*
+
+*.doc*
+~$*.doc*
+
+~$*.xls*
+
+
+# Python
+*.pyc
+
+
+# Imagens
+
+*.png
+
+*.jpg
+
+*.jpeg
+
+*.log
