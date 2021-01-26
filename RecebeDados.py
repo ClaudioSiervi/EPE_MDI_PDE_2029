@@ -4,7 +4,7 @@ import re as re;
 class RecebeDados:
         
     def __init__(self, plan_dados):
-        # abre a planilha a ser usada para receber os dados
+        # lê a planilha de premissas e transforma em um objeto 'book'
         self.planilha = dadosExcel.open_workbook(plan_dados);
         return;
     

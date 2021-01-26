@@ -10,7 +10,9 @@ O modelo computacional MDI (modelo de decisão de investimentos), empregado na e
 • Bibliotecas da própria linguagem importadas ao longo do código (pyomo, openpyxl, etc);
 * As bibliotecas utilizadas pelo MDI podem ser obtidas diretamente pela ferramenta de gerenciamento de pacotes pip, disponibilizada na instalação padrão do Python.
 
-• Pacote de otimização (CPLEX, COIN-OR, Gurobi, etc).
+• Solver de otimização CPLEX
+	Instalar o CPLEX e instalar o pacote python correspondende    
+	`C:\Program Files\IBM\ILOG\CPLEX_Studio128\python>python setup.py install`
 
 
 #### Ambiente computacional utilizado nos estudos do PDE 2029
