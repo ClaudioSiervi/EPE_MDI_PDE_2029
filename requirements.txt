@@ -16,7 +16,7 @@ ply==3.11
 Pyomo==5.6.7
 PyUtilib==5.7.2
 pywin32==227
-requests==2.18.4
+requests==2.20.0
 six==1.13.0
 urllib3==1.22
 xlrd==1.2.0
