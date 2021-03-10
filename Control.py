@@ -8,6 +8,7 @@ from coopr.pyomo import *;
 from pyomo.environ import *;
 from pyomo.opt import *;
 import jsonpickle;
+import cplex
 
 class Control:
     
@@ -33,7 +34,7 @@ class Control:
         self.problema = Problema(self.recebe_dados, self.sin, self.isRestPotHabilitada, self.isRestExpJanHabilitada, self.isPerpetHabilitada, self.fatorCarga, self.anoValidadeTemp, self.fatorValidadeTemp, self.isIntercambLimitado, self.subsFic);
         
         # habilita o cplex
-        optsolver = SolverFactory("cplex", executable= "C:\\Program Files\\IBM\\ILOG\\CPLEX_Studio128\\cplex\\bin\\x64_win64\\cplex.exe");
+        optsolver = SolverFactory("cplex");
         print ("Modelo Criado");
         self.problema.modelo.preprocess();
         print ("Pre-process executado");
@@ -46,7 +47,7 @@ class Control:
 
 
         print("Executando o CPLEX");
-
+        print(self.problema.modelo)
         results = optsolver.solve(self.problema.modelo, load_solutions=True); #, symbolic_solver_labels=True, tee=True);
 
         print("Impressão de Resultados");
