@@ -15,7 +15,7 @@ openpyxl==3.0.2
 ply==3.11
 Pyomo==5.6.7
 PyUtilib==5.7.2
-pywin32==227
+pywin32==301
 requests==2.18.4
 six==1.13.0
 urllib3==1.22
